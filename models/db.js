@@ -41,27 +41,15 @@ const driversignuptemplate=new Schema({
         type:String,
         required:true
     },
-    email:{
-        type:String,
-        required:false
-    },
     password:{
         type:String,
         required:true
     },
-    confirm_password:{
-        type:String,
-        required:true
-    },
-    address:{
+    confirmpassword:{
         type:String,
         required:true
     },
     city:{
-        type:String,
-        required:true
-    },
-    state:{
         type:String,
         required:true
     },
@@ -73,41 +61,21 @@ const driversignuptemplate=new Schema({
         type:Number,
         required:true
     },
-    altphoneno:{
-        type:Number,
-        required:true
-    },
-    dob:{
-        type:Date,
-        required:true
-    },
+    
     license_no:{
         type:String,
         required:true
     },
-    insurance_provider:{
-        type:String,
-        required:true
-    },
+    
     insurance_policy_no:{
         type:String,
         required:true
     },
     license_photo:{
         type:Buffer,
-        required:true,
+        required:false,
         contentType:String
 
-    },
-    aadharcard:{
-        type:Buffer,
-        required:true,
-        contentType:String
-    },
-    insurance_photo:{
-        type:Buffer,
-        required:true,
-        contentType:String
     },
     type_of_truck:{
         type:String,
@@ -115,21 +83,11 @@ const driversignuptemplate=new Schema({
     },
     truck_photo:{
         type:Buffer,
-        required:true,
+        required:false,
         contentType:String
     },
-    truck_purchase_date:{
-        type:Date,
-        required:true
-    },
-    accidents:{
-        type:Number,
-        required:true
-    },
-    condition:{
-        type:String,
-        required:true
-    }
+    
+    
 
 
 
@@ -163,7 +121,7 @@ const clientsignuptemplate=new Schema({
         type:String,
         required:true
     },
-    confirm_password:{
+    confirmpassword:{
         type:String,
         required:true
     },
