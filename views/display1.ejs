@@ -8,9 +8,12 @@
   </head>
   <body>
 <h1>
+  <% var i=0 %>
   <%data.forEach(function(transaction){ %>
     <h2><%= transaction.firstname %> <%= transaction.lastname %></h2>
     <h2><%= transaction.type_of_truck %></h2>
+    <% i++ %>
+    <button type="submit" class="btn btn-primary" name="index" value='client'><h2>BOOK NOW</h2></button>
 <%  }); %>
 </h1>
   </body>

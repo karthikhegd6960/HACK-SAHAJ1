@@ -7,6 +7,7 @@ app.use(express.static("public"));
 require('./db/connect.js');
 
 var driver_phone;
+var noobs=[];
 
 
 const { client , driver,display}=require('./models/db.js');
@@ -43,7 +44,7 @@ app.post("/clientpro1",async function(req,res){
   {start_city:req.body.start_city,intermediate_city:req.body.end_city}]}]});
     console.log(all);
     var temp="";
-    var noobs=[];
+    noobs=[];
     console.log(all.length);
     for(var i=0;i<all.length;i++){
       temp=await driver.findOne({phoneno:all[i].phoneno});
@@ -60,6 +61,11 @@ app.post("/clientpro1",async function(req,res){
   }
 
 
+});
+app.post("/display1",function(req,res){
+  var x=req.body.index;
+  console.log(noobs[i]);
+  res.redirect("client");
 });
 app.post('/update',async function(req,res){
     try{
