@@ -35,7 +35,32 @@ app.get("/clientprof",function(req,res){
 app.get("/clientpro1",function(req,res){
     res.render("clientpro1");
   });
+app.post("/clientpro1",async function(req,res){
+  try{
+    var p_no=[];
+    var all=await display.find({$and : [{availability_date:req.body.availability_date},{ $or: [{start_city:req.body.start_city,end_city:req.body.end_city},
+    {intermediate_city:req.body.start_city,end_city:req.body.end_city},
+  {start_city:req.body.start_city,intermediate_city:req.body.end_city}]}]});
+    console.log(all);
+    var temp="";
+    var noobs=[];
+    console.log(all.length);
+    for(var i=0;i<all.length;i++){
+      temp=await driver.findOne({phoneno:all[i].phoneno});
+      console.log(temp);
+      noobs.push(temp);
+    }
+    console.log(noobs);
 
+
+    res.render('display1',{data:noobs})
+  }
+  catch(err){
+    console.log(err);
+  }
+
+
+});
 app.post('/update',async function(req,res){
     try{
       user=await driver.findOne({phoneno:driver_phone});
