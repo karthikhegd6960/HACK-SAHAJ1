@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <title>HACKATHON</title>
   </head>
   <body>
@@ -19,38 +21,82 @@
                       style="width: 150px; z-index: 1">
                     
                   </div>
-                  <div class="ms-3" style="margin-top: 130px;">
-                    <h5><%= fname %> <%= lname %></h5>
-                    <p><%= phoneno %></p>
-                  </div>
-                </div>
-                <div class="p-4 text-black" style="background-color: #f8f9fa;">
-                  <div class="d-flex justify-content-end text-center py-1">
-                    <div>
-                      <p class="mb-1 h5"></p>
-                      <p class="small text-muted mb-0">Ratings</p>
-                    </div>
-                    <div class="px-3">
-                      <p class="mb-1 h5"></p>
-                      <p class="small text-muted mb-0"></p>
-                    </div>
-                    <div>
-                      <p class="mb-1 h5"></p>
-                      <p class="small text-muted mb-0"></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body p-4 text-black">
-                  <div class="mb-5">
-                    <p class="lead fw-normal mb-1">About</p>
-                    <div class="p-4" style="background-color: #f8f9fa;">
-                      <p class="font-italic mb-1">License Number: <%=license_no %></p>
-                      <p class="font-italic mb-1">Insurance Policy Number: <%=insurance_policy_no %></p>
-                      <p class="font-italic mb-0">Type of Truck: <%=type_of_truck %></p>
-                    </div>
-                  </div>
                   
-                  <a class="btn btn-dark" href="/update" role="button">Update Availability</a>
+                </div>
+               
+                
+                  <div id="booking" class="section">
+                       <div class="section-center"> 
+                           <div class="container"> 
+                               <div class="row"> 
+                                   <div class="booking-form">
+                                        <div class="form-header">
+                                             <h1>Book Vehicle</h1> 
+                                        </div> 
+                                        <form> <div class="row">
+                                             <div class="col-md-6"> 
+                                                 <div class="form-group"> 
+                                                     <input class="form-control" type="date" required>
+                                                      <span class="form-label">Booking Date</span> 
+                                                    </div>
+                                             </div> 
+                                             <div class="col-md-6"> 
+                                                </div> 
+                                            </div> 
+                                            <div class="row"> 
+                                                <div class="col-md-4">
+                                                     <div class="form-group">
+                                                          <select class="form-control" required>
+                                                               <option value="" selected hidden>Type of Vehicle:</option> 
+                                                               <option>Mini Truck,Capacity:750kg</option> 
+                                                               <option>Pickup Truck,Capacity:850kg</option> 
+                                                               <option>Pickup Truck,Capacity:1ton</option>
+                                                               <option>Tipper Truck,Light,Capacity:2ton-16ton</option>
+                                                               <option>Tipper Truck,Medium,Capacity:16ton-31ton</option>
+                                                               <option>Tipper Truck,Large,Capacity:31ton-45ton</option>
+                                                            </select> 
+                                                        <span class="select-arrow"></span> 
+                                                        <span class="form-label">Place</span> 
+                                                    </div> 
+                                                </div></div>
+                                                <div class="row">
+                                                <div class="col-md-4"> 
+                                                    <div class="form-group">
+                                                         <select class="form-control" required> 
+                                                             <option value="" selected hidden>Pickup address</option>
+                                                              <option>Mysore</option>
+                                                              <option>Banglore</option> 
+                                                              <option>Delhi</option>
+                                                              <option>Punjab</option>
+                                                             </select> 
+                                                             
+                                                            </div> 
+                                                        </div> 
+                                                        <div class="col-md-4">
+                                                        <div class="form-group"> 
+                                                            
+                                                            <select class="form-control" required> 
+                                                                        <option value="" selected hidden>Destination Address</option>
+                                                                         <option>Mysore</option> 
+                                                                         <option>Banglore</option> 
+                                                                         <option>Delhi</option>
+                                                                         <option>Punjab</option>  
+                                                                        </select> 
+                                                                         </div>
+                                                                         </div>
+                                                                         <div class="col-md-6">       
+                                                                        </div> 
+                                                                         </div> 
+                                                                         <div class="row">
+                                                                         <a class="btn btn-dark" href="/clientpro1" role="button">Search Availability</a>
+                                                                        </div></div>
+                                                                     </form> 
+                                                                    </div> 
+                                                                </div> 
+                                                            </div> 
+                                                        </div>
+</div> 
+                  
                  
                 </div>
               </div>

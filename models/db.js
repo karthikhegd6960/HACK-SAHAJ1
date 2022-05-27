@@ -101,22 +101,28 @@ const displaytemplate=new Schema({
         required:true,
         unique:true
     },
-    Availability_date:{
+    availability_date:{
         type:Date,
         required:true
     },
-    Source:{
+    start_city:{
         type:String,
         required:true
     },
-    Intermediate_city:{
+    intermediate_city:{
         type:String,
         required:false
     },
-    Destination:{
+    end_city:{
         type:String,
         required:true
+    },
+    capacity:{
+        type:Number,
+        required:true
     }
+    
+    
 })
 
 const client=mongoose.model('client',clientsignuptemplate);

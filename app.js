@@ -19,9 +19,23 @@ app.get("/driverlogin",function(req,res){
 app.get("/client",function(req,res){
   res.render("client");
 });
+app.get("/update",function(req,res){
+    res.render("update");
+  });
+
 app.get("/",function(req,res){
   res.render("index");
 });
+app.get("/clientprof",function(req,res){
+    res.render("clientprof");
+  });
+app.get("/clientpro1",function(req,res){
+    res.render("clientpro1");
+  });
+
+app.post('/update',function(req,res){
+    res.send('DATA');
+})
 app.post("/client",async(req,res)=>{
     try{
         
@@ -54,7 +68,7 @@ app.post("/driver",async(req,res)=>{
     DriverSchema=new driver({
         firstname:req.body.firstname,
         lastname:req.body.lastname,
-        
+        dlphoto:req.body.license_photo,
         
         password:req.body.password,
         confirmpassword:req.body.confirmpassword,
@@ -89,6 +103,16 @@ app.post("/driver",async(req,res)=>{
 
 
 });
+app.post('/clientprof',async(req,res)=>{
+    user=await client.findOne({phoneno:phoneno});
+    res.render('clientpro1',{
+               fname:user.firstname,
+               lname:user.lastname,
+               email:user.email,
+               phoneno:user.phoneno,
+
+    });
+})
 app.post('/clientlogin',async(req,res)=>{
     try{
         phoneno=req.body.login_phoneno;
@@ -96,7 +120,7 @@ app.post('/clientlogin',async(req,res)=>{
 
        user=await client.findOne({phoneno:phoneno});
        if(password==user.password){
-           res.status(201).render('availability',{
+           res.status(201).render('clientprof',{
                fname:user.firstname,
                lname:user.lastname,
                email:user.email,
