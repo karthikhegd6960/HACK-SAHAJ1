@@ -38,19 +38,22 @@ app.get("/clientpro1",function(req,res){
 
 app.post('/update',async function(req,res){
     try{
-    
-    UpdateSchema=new display({
-        
-        phoneno:driver_phone,
-        availability_date:req.body.availability_date,
-        start_city:req.body.start_city,
-        intermediate_city:req.body.intermediate_city,
-        end_city:req.body.end_city,
-       capacity:req.body.capacity
-        
+      user=await driver.findOne({phoneno:driver_phone});
+display.updateOne({phoneno:user.phoneno},{
+  availability_date:req.body.availability_date,
+  start_city:req.body.start_city,
+  intermediate_city:req.body.intermediate_city,
+  end_city:req.body.end_city,
+  capacity:req.body.capacity
+},function(err,docs){
+  if(err){
+    console.log(err);
+  }
+  else{
+    console.log(docs);
+  }
+});
 
-    })
-    const up=await UpdateSchema.save();
 }
     catch(err){
         res.status(400).send(err);
@@ -64,16 +67,16 @@ app.post('/update',async function(req,res){
 });
 app.post("/client",async(req,res)=>{
     try{
-        
+
     ClientSchema=new client({
         firstname:req.body.firstname,
         lastname:req.body.lastname,
         email:req.body.email,
-        
+
         password:req.body.password,
         confirmpassword:req.body.confirmpassword,
         phoneno:req.body.phoneno
-        
+
 
     })
     const cl=await ClientSchema.save();
@@ -90,35 +93,52 @@ app.post("/client",async(req,res)=>{
 });
 app.post("/driver",async(req,res)=>{
     try{
-        
+
     DriverSchema=new driver({
         firstname:req.body.firstname,
         lastname:req.body.lastname,
         dlphoto:req.body.license_photo,
-        
+
         password:req.body.password,
         confirmpassword:req.body.confirmpassword,
         phoneno:req.body.phoneno,
-        
+
         city:req.body.city,
-        
+
         pincode:req.body.pincode,
-        
+
         license_no:req.body.license_no,
-        
+
         insurance_policy_no:req.body.insurance_policy_no,
         license_photo:req.body.license_photo,
-        
-        
+
+
         type_of_truck:req.body.type_of_truck,
         truck_photo:req.body.truck_photo,
-        
-        
-        
+
+
+
 
     })
     const dr=await DriverSchema.save();
 }
+    catch(err){
+        res.status(400).send(err);
+        console.log(err)
+    }
+    try{
+    UpdateSchema=new display({
+
+        phoneno:driver_phone,
+        availability_date:today,
+        start_city:"#####",
+        intermediate_city:"####",
+        end_city:"####",
+       capacity:0
+
+
+    })
+    const up=await UpdateSchema.save();}
     catch(err){
         res.status(400).send(err);
         console.log(err)
@@ -151,7 +171,7 @@ app.post('/clientlogin',async(req,res)=>{
                lname:user.lastname,
                email:user.email,
                phoneno:user.phoneno,
-               
+
            });
        }else{
            res.send("invalid login details");
@@ -172,6 +192,8 @@ app.post('/driverlogin',async(req,res)=>{
        user=await driver.findOne({phoneno:phoneno});
        driver_phone=req.body.login_phoneno;
        if(password==user.password){
+         var today=new Date();
+
            res.status(201).render('availability',{
                license_no:user.license_no,
                insurance_policy_no:user.insurance_policy_no,
@@ -196,4 +218,3 @@ app.post('/driverlogin',async(req,res)=>{
 app.listen(3000,function(){
   console.log("server up an drunning on port 3000");
 });
-

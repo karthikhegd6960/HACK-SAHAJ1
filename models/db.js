@@ -31,14 +31,14 @@ const driversignuptemplate=new Schema({
     phoneno:{
         type:Number,
         required:true,
-        unique:true
+        
     },
-    
+
     license_no:{
         type:String,
         required:true
     },
-    
+
     insurance_policy_no:{
         type:String,
         required:true
@@ -58,8 +58,8 @@ const driversignuptemplate=new Schema({
         required:false,
         contentType:String
     },
-    
-    
+
+
 
 
 
@@ -121,8 +121,8 @@ const displaytemplate=new Schema({
         type:Number,
         required:true
     }
-    
-    
+
+
 })
 
 const client=mongoose.model('client',clientsignuptemplate);
