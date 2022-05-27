@@ -6,7 +6,10 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static("public"));
 require('./db/connect.js');
 
-const { client , driver}=require('./models/db.js');
+var driver_phone;
+
+
+const { client , driver,display}=require('./models/db.js');
 app.get("/driver",function(req,res){
   res.render("driver");
 });
@@ -33,9 +36,32 @@ app.get("/clientpro1",function(req,res){
     res.render("clientpro1");
   });
 
-app.post('/update',function(req,res){
-    res.send('DATA');
-})
+app.post('/update',async function(req,res){
+    try{
+    
+    UpdateSchema=new display({
+        
+        phoneno:driver_phone,
+        availability_date:req.body.availability_date,
+        start_city:req.body.start_city,
+        intermediate_city:req.body.intermediate_city,
+        end_city:req.body.end_city,
+       capacity:req.body.capacity
+        
+
+    })
+    const up=await UpdateSchema.save();
+}
+    catch(err){
+        res.status(400).send(err);
+        console.log(err)
+    }
+
+    res.send('Updated');
+
+
+
+});
 app.post("/client",async(req,res)=>{
     try{
         
@@ -144,6 +170,7 @@ app.post('/driverlogin',async(req,res)=>{
         const password=req.body.login_password;
 
        user=await driver.findOne({phoneno:phoneno});
+       driver_phone=req.body.login_phoneno;
        if(password==user.password){
            res.status(201).render('availability',{
                license_no:user.license_no,

@@ -33,10 +33,10 @@
                                         <div class="form-header">
                                              <h1>Update Availability</h1> 
                                         </div> 
-                                        <form> <div class="row">
+                                        <form action="/update" method="post"> <div class="row">
                                              <div class="col-md-6"> 
                                                  <div class="form-group"> 
-                                                     <input class="form-control" type="date" required>
+                                                     <input class="form-control" type="date" name="availability_date" required>
                                                       <span class="form-label">Booking Date</span> 
                                                     </div>
                                              </div> 
@@ -46,13 +46,13 @@
                                             <div class="row"> 
                                                 <div class="col-md-4">
                                                      <div class="form-group">
-                                                          <select class="form-control" required>
-                                                               <option value="" selected hidden>Start City</option> 
+                                                          <select class="form-control" required name="start_city">
+                                                               <option value=""  selected hidden>Start City</option> 
                                                                
-                                                               <option>Banglore</option>
-                                                               <option>Delhi</option>
-                                                               <option>Punjab</option>
-                                                               <option>Mysore</option>
+                                                               <option >Banglore</option>
+                                                               <option >Delhi</option>
+                                                               <option >Punjab</option>
+                                                               <option >Mysore</option>
                                                             </select> 
                                                         <span class="select-arrow"></span> 
                                                         <span class="form-label">Place</span> 
@@ -61,12 +61,12 @@
                                                 <div class="row">
                                                 <div class="col-md-4"> 
                                                     <div class="form-group">
-                                                         <select class="form-control" required> 
+                                                         <select class="form-control" required name="intermediate_city"> 
                                                              <option value="" selected hidden>Intermediate City</option>
-                                                              <option>Mysore</option>
-                                                              <option>Banglore</option> 
-                                                              <option>Delhi</option>
-                                                              <option>Punjab</option>
+                                                              <option > Mysore</option>
+                                                              <option >Banglore</option> 
+                                                              <option >Delhi</option>
+                                                              <option >Punjab</option>
                                                              </select> 
                                                              
                                                             </div> 
@@ -74,12 +74,12 @@
                                                         <div class="col-md-4">
                                                         <div class="form-group"> 
                                                             
-                                                            <select class="form-control" required> 
-                                                                        <option value="" selected hidden>End City</option>
-                                                                         <option>Mysore</option> 
-                                                                         <option>Banglore</option> 
-                                                                         <option>Delhi</option>
-                                                                         <option>Punjab</option>  
+                                                            <select class="form-control" required name="end_city"> 
+                                                                        <option value=""  selected hidden>End City</option>
+                                                                         <option  >Mysore</option> 
+                                                                         <option  >Banglore</option> 
+                                                                         <option  >Delhi</option>
+                                                                         <option  >Punjab</option>  
                                                                         </select> 
 
                                                                          </div>
@@ -88,11 +88,11 @@
                                                                          <div class="col-md-6"><span class="select-arrow"></span> 
                                                         <span class="form-label">Capacity Available:
                                                         </span>      
-                                                        <input class="form-control" type="number" placeholder="">  
+                                                        <input class="form-control" type="number" placeholder="" name="capacity">  
                                                                         </div> 
                                                                          </div> 
                                                                          <div class="row">
-                                                                         <a class="btn btn-dark" href="/clientpro1" role="button">Search Availability</a>
+                                                                         <button class="btn btn-dark"  role="button" >Confirm</button>
                                                                         </div></div>
                                                                      </form> 
                                                                     </div> 
