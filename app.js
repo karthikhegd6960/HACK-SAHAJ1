@@ -96,7 +96,13 @@ app.post('/clientlogin',async(req,res)=>{
 
        user=await client.findOne({phoneno:phoneno});
        if(password==user.password){
-           res.status(201).send('aboutus');
+           res.status(201).render('availability',{
+               fname:user.firstname,
+               lname:user.lastname,
+               email:user.email,
+               phoneno:user.phoneno,
+               
+           });
        }else{
            res.send("invalid login details");
        }
@@ -115,7 +121,15 @@ app.post('/driverlogin',async(req,res)=>{
 
        user=await driver.findOne({phoneno:phoneno});
        if(password==user.password){
-           res.status(201).send('dri');
+           res.status(201).render('availability',{
+               license_no:user.license_no,
+               insurance_policy_no:user.insurance_policy_no,
+               type_of_truck:user.type_of_truck,
+               phoneno:user.phoneno,
+               city:user.city,
+               fname:user.firstname,
+               lname:user.lastname
+           });
        }else{
            res.send("invalid login details");
        }
@@ -131,3 +145,4 @@ app.post('/driverlogin',async(req,res)=>{
 app.listen(3000,function(){
   console.log("server up an drunning on port 3000");
 });
+

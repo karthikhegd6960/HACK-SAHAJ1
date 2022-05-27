@@ -2,35 +2,6 @@ const mongoose=require('mongoose');
 
 const Schema =mongoose.Schema
 
-const signup1=new Schema({
-    firstname:{
-        type:String,
-        required:true
-    },
-    lastname:{
-        type:String,
-        required:true
-    },
-    email:{
-        type:String,
-        required:true
-    },
-    phoneno:{
-        type:String,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true
-    },
-    
-    dob:{
-        type:Date,
-        required:true
-        
-    }
-
-})
 
 const driversignuptemplate=new Schema({
     firstname:{
@@ -59,7 +30,8 @@ const driversignuptemplate=new Schema({
     },
     phoneno:{
         type:Number,
-        required:true
+        required:true,
+        unique:true
     },
     
     license_no:{
@@ -93,16 +65,7 @@ const driversignuptemplate=new Schema({
 
 })
 
-const driverlogintemplate=new Schema({
-    phoneno:{
-        type:Number,
-        required:true
-    },
-    password:{
-        type:String,
-        required:true
-    }
-})
+
 
 const clientsignuptemplate=new Schema({
     firstname:{
@@ -127,23 +90,37 @@ const clientsignuptemplate=new Schema({
     },
     phoneno:{
         type:Number,
-        required:true
+        required:true,
+        unique:true
     }
 })
 
-const clientlogintemplate= new Schema({
+const displaytemplate=new Schema({
     phoneno:{
+        type:Number,
+        required:true,
+        unique:true
+    },
+    Availability_date:{
+        type:Date,
+        required:true
+    },
+    Source:{
         type:String,
         required:true
     },
-    password:{
+    Intermediate_city:{
+        type:String,
+        required:false
+    },
+    Destination:{
         type:String,
         required:true
     }
-
 })
 
 const client=mongoose.model('client',clientsignuptemplate);
 const driver=mongoose.model('driver',driversignuptemplate);
+const display=mongoose.model('display',displaytemplate);
 
-module.exports={client,driver};
+module.exports={client,driver,display};
