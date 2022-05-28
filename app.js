@@ -29,6 +29,9 @@ app.get("/client",function(req,res){
 app.get("/update",function(req,res){
     res.render("update");
   });
+  app.get("/book",function(req,res){
+    res.render("book");
+  });
 
 app.get("/",function(req,res){
   res.render("index");
@@ -42,7 +45,7 @@ app.get("/clientpro1",function(req,res){
 app.post("/clientpro1",async function(req,res){
   try{
     var p_no=[];
-    var all=await display.find({$and : [{availability_date:req.body.availability_date},{ $or: [{start_city:req.body.start_city,end_city:req.body.end_city},
+    var all=await display.find({$and : [{capacity:{$gte:req.body.capacity}},{availability_date:req.body.availability_date},{ $or: [{start_city:req.body.start_city,end_city:req.body.end_city},
     {intermediate_city:req.body.start_city,end_city:req.body.end_city},
   {start_city:req.body.start_city,intermediate_city:req.body.end_city}]}]});
     console.log(all);

@@ -35,9 +35,9 @@
                                         </div>
                                         <form action="/clientpro1" method="post"> <div class="row">
                                              <div class="col-md-6">
-                                                 <div class="form-group">
+                                                 <div class="form-group"><span class="form-label">Booking Date</span>
                                                      <input class="form-control" name="availability_date" type="date" required>
-                                                      <span class="form-label">Booking Date</span>
+                                                     <span class="form-label">Capacity</span>
                                                     </div>
                                              </div>
                                              <div class="col-md-6">
@@ -46,17 +46,10 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                      <div class="form-group">
-                                                          <select class="form-control" required>
-                                                               <option value="" selected hidden>Type of Vehicle:</option>
-                                                               <option>Mini Truck,Capacity:750kg</option>
-                                                               <option>Pickup Truck,Capacity:850kg</option>
-                                                               <option>Pickup Truck,Capacity:1ton</option>
-                                                               <option>Tipper Truck,Light,Capacity:2ton-16ton</option>
-                                                               <option>Tipper Truck,Medium,Capacity:16ton-31ton</option>
-                                                               <option>Tipper Truck,Large,Capacity:31ton-45ton</option>
-                                                            </select>
-                                                        <span class="select-arrow"></span>
-                                                        <span class="form-label">Place</span>
+                                                          <input type="number" name="capacity"  placeholder="Capacity(kg)"
+                                                          >
+                                                          <span class="form-label">Place</span>
+                                                        
                                                     </div>
                                                 </div></div>
                                                 <div class="row">
@@ -88,7 +81,7 @@
                                                                         </div>
                                                                          </div>
                                                                          <div class="row">
-                                                                         <button class="btn btn-dark" value="clientpro1" role="button">Search Availability</button>
+                                                                         <button class="btn btn-dark" value="display1" role="button">Search Availability</button>
                                                                         </div></div>
                                                                      </form>
                                                                     </div>
